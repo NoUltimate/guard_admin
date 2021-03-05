@@ -173,7 +173,7 @@ mybatis-plus:
 #jeecg专用配置
 jeecg :
   # 本地：local\Minio：minio\阿里云：alioss
-  uploadType: local
+  uploadType: alioss
   path :
     #文件上传根目录 设置
     upload: D://opt//upFiles
@@ -183,11 +183,11 @@ jeecg :
     excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**
   #阿里云oss存储配置
   oss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    accessKey: ??
-    secretKey: ??
-    bucketName: jeecgos
-    staticDomain: ??
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    accessKey: LTAI4FcXBaciRwwFNoh1xcXX
+    secretKey: zx0DwXj9Ct4Yz9wmUJpNBc8JiBPbaH
+    bucketName: guardian-star
+    staticDomain: guardian-star.oss-cn-hangzhou.aliyuncs.com
   # ElasticSearch 6设置
   elasticsearch:
     cluster-name: jeecg-ES

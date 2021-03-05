@@ -8065,7 +8065,7 @@ function isDataItemOption(dataItem) {
   // && !(dataItem[0] && isObject(dataItem[0]) && !(dataItem[0] instanceof Array));
 }
 /**
- * This helper method convert value in data.
+ * This helper method enhance value in data.
  * @param {string|number|Date} value
  * @param {Object|string} [dimInfo] If string (like 'x'), dimType defaults 'number'.
  */
@@ -10426,7 +10426,7 @@ function createPathProxyFromString(data) {
       var fa;
       var fs;
       var x1 = cpx;
-      var y1 = cpy; // convert l, H, h, V, and v to L
+      var y1 = cpy; // enhance l, H, h, V, and v to L
 
       switch (c) {
         case 'l':

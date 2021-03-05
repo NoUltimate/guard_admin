@@ -1,4 +1,4 @@
-package org.jeecg.modules.demo.mood.controller;
+package org.jeecg.modules.demo.test.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
-import org.jeecg.modules.demo.mood.entity.Mood;
-import org.jeecg.modules.demo.mood.service.IMoodService;
+import org.jeecg.modules.demo.test.entity.GuardianUserDiary;
+import org.jeecg.modules.demo.test.service.IGuardianUserDiaryService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -37,66 +37,66 @@ import io.swagger.annotations.ApiOperation;
 import org.jeecg.common.aspect.annotation.AutoLog;
 
  /**
- * @Description: 情绪轮列表
+ * @Description: 用户日记
  * @Author: jeecg-boot
- * @Date:   2021-02-02
+ * @Date:   2021-02-27
  * @Version: V1.0
  */
-@Api(tags="情绪轮列表")
+@Api(tags="用户日记")
 @RestController
-@RequestMapping("/mood/mood")
+@RequestMapping("/test/guardianUserDiary")
 @Slf4j
-public class MoodController extends JeecgController<Mood, IMoodService> {
+public class GuardianUserDiaryController extends JeecgController<GuardianUserDiary, IGuardianUserDiaryService> {
 	@Autowired
-	private IMoodService moodService;
+	private IGuardianUserDiaryService guardianUserDiaryService;
 	
 	/**
 	 * 分页列表查询
 	 *
-	 * @param mood
+	 * @param guardianUserDiary
 	 * @param pageNo
 	 * @param pageSize
 	 * @param req
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-分页列表查询")
-	@ApiOperation(value="情绪轮列表-分页列表查询", notes="情绪轮列表-分页列表查询")
+	@AutoLog(value = "用户日记-分页列表查询")
+	@ApiOperation(value="用户日记-分页列表查询", notes="用户日记-分页列表查询")
 	@GetMapping(value = "/list")
-	public Result<?> queryPageList(Mood mood,
+	public Result<?> queryPageList(GuardianUserDiary guardianUserDiary,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 								   HttpServletRequest req) {
-		QueryWrapper<Mood> queryWrapper = QueryGenerator.initQueryWrapper(mood, req.getParameterMap());
-		Page<Mood> page = new Page<Mood>(pageNo, pageSize);
-		IPage<Mood> pageList = moodService.page(page, queryWrapper);
+		QueryWrapper<GuardianUserDiary> queryWrapper = QueryGenerator.initQueryWrapper(guardianUserDiary, req.getParameterMap());
+		Page<GuardianUserDiary> page = new Page<GuardianUserDiary>(pageNo, pageSize);
+		IPage<GuardianUserDiary> pageList = guardianUserDiaryService.page(page, queryWrapper);
 		return Result.OK(pageList);
 	}
 	
 	/**
 	 *   添加
 	 *
-	 * @param mood
+	 * @param guardianUserDiary
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-添加")
-	@ApiOperation(value="情绪轮列表-添加", notes="情绪轮列表-添加")
+	@AutoLog(value = "用户日记-添加")
+	@ApiOperation(value="用户日记-添加", notes="用户日记-添加")
 	@PostMapping(value = "/add")
-	public Result<?> add(@RequestBody Mood mood) {
-		moodService.save(mood);
+	public Result<?> add(@RequestBody GuardianUserDiary guardianUserDiary) {
+		guardianUserDiaryService.save(guardianUserDiary);
 		return Result.OK("添加成功！");
 	}
 	
 	/**
 	 *  编辑
 	 *
-	 * @param mood
+	 * @param guardianUserDiary
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-编辑")
-	@ApiOperation(value="情绪轮列表-编辑", notes="情绪轮列表-编辑")
+	@AutoLog(value = "用户日记-编辑")
+	@ApiOperation(value="用户日记-编辑", notes="用户日记-编辑")
 	@PutMapping(value = "/edit")
-	public Result<?> edit(@RequestBody Mood mood) {
-		moodService.updateById(mood);
+	public Result<?> edit(@RequestBody GuardianUserDiary guardianUserDiary) {
+		guardianUserDiaryService.updateById(guardianUserDiary);
 		return Result.OK("编辑成功!");
 	}
 	
@@ -106,11 +106,11 @@ public class MoodController extends JeecgController<Mood, IMoodService> {
 	 * @param id
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-通过id删除")
-	@ApiOperation(value="情绪轮列表-通过id删除", notes="情绪轮列表-通过id删除")
+	@AutoLog(value = "用户日记-通过id删除")
+	@ApiOperation(value="用户日记-通过id删除", notes="用户日记-通过id删除")
 	@DeleteMapping(value = "/delete")
 	public Result<?> delete(@RequestParam(name="id",required=true) String id) {
-		moodService.removeById(id);
+		guardianUserDiaryService.removeById(id);
 		return Result.OK("删除成功!");
 	}
 	
@@ -120,11 +120,11 @@ public class MoodController extends JeecgController<Mood, IMoodService> {
 	 * @param ids
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-批量删除")
-	@ApiOperation(value="情绪轮列表-批量删除", notes="情绪轮列表-批量删除")
+	@AutoLog(value = "用户日记-批量删除")
+	@ApiOperation(value="用户日记-批量删除", notes="用户日记-批量删除")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<?> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
-		this.moodService.removeByIds(Arrays.asList(ids.split(",")));
+		this.guardianUserDiaryService.removeByIds(Arrays.asList(ids.split(",")));
 		return Result.OK("批量删除成功!");
 	}
 	
@@ -134,26 +134,26 @@ public class MoodController extends JeecgController<Mood, IMoodService> {
 	 * @param id
 	 * @return
 	 */
-	@AutoLog(value = "情绪轮列表-通过id查询")
-	@ApiOperation(value="情绪轮列表-通过id查询", notes="情绪轮列表-通过id查询")
+	@AutoLog(value = "用户日记-通过id查询")
+	@ApiOperation(value="用户日记-通过id查询", notes="用户日记-通过id查询")
 	@GetMapping(value = "/queryById")
 	public Result<?> queryById(@RequestParam(name="id",required=true) String id) {
-		Mood mood = moodService.getById(id);
-		if(mood==null) {
+		GuardianUserDiary guardianUserDiary = guardianUserDiaryService.getById(id);
+		if(guardianUserDiary==null) {
 			return Result.error("未找到对应数据");
 		}
-		return Result.OK(mood);
+		return Result.OK(guardianUserDiary);
 	}
 
     /**
     * 导出excel
     *
     * @param request
-    * @param mood
+    * @param guardianUserDiary
     */
     @RequestMapping(value = "/exportXls")
-    public ModelAndView exportXls(HttpServletRequest request, Mood mood) {
-        return super.exportXls(request, mood, Mood.class, "情绪轮列表");
+    public ModelAndView exportXls(HttpServletRequest request, GuardianUserDiary guardianUserDiary) {
+        return super.exportXls(request, guardianUserDiary, GuardianUserDiary.class, "用户日记");
     }
 
     /**
@@ -165,7 +165,7 @@ public class MoodController extends JeecgController<Mood, IMoodService> {
     */
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
-        return super.importExcel(request, response, Mood.class);
+        return super.importExcel(request, response, GuardianUserDiary.class);
     }
 
 }

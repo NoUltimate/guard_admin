@@ -1,4 +1,4 @@
-package org.jeecg.modules.demo.mood.entity;
+package org.jeecg.modules.demo.test.entity;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -18,17 +18,17 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @Description: 情绪轮列表
+ * @Description: 用户日记
  * @Author: jeecg-boot
- * @Date:   2021-02-02
+ * @Date:   2021-02-27
  * @Version: V1.0
  */
 @Data
-@TableName("mood_type")
+@TableName("guardian_user_diary")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="mood_type对象", description="情绪轮列表")
-public class Mood implements Serializable {
+@ApiModel(value="guardian_user_diary对象", description="用户日记")
+public class GuardianUserDiary implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	/**主键*/
@@ -51,15 +51,20 @@ public class Mood implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "更新日期")
     private java.util.Date updateTime;
-	/**所属部门*/
-    @ApiModelProperty(value = "所属部门")
-    private java.lang.String sysOrgCode;
-	/**情绪名称*/
-	@Excel(name = "情绪名称", width = 15)
-    @ApiModelProperty(value = "情绪名称")
-    private java.lang.String name;
-	/**数据*/
-	@Excel(name = "数据", width = 15)
-    @ApiModelProperty(value = "数据")
-    private java.lang.String data;
+	/**标题*/
+	@Excel(name = "标题", width = 15)
+    @ApiModelProperty(value = "标题")
+    private java.lang.String title;
+	/**情绪id*/
+	@Excel(name = "情绪id", width = 15)
+    @ApiModelProperty(value = "情绪id")
+    private java.math.BigDecimal moodId;
+	/**标签*/
+	@Excel(name = "标签", width = 15)
+    @ApiModelProperty(value = "标签")
+    private java.lang.String tag;
+	/**日记内容*/
+	@Excel(name = "日记内容", width = 15)
+    @ApiModelProperty(value = "日记内容")
+    private java.lang.String content;
 }

@@ -78,7 +78,7 @@ public class CommonController {
         if(oConvertUtils.isEmpty(bizPath)){
             if(CommonConstant.UPLOAD_TYPE_OSS.equals(uploadType)){
                 //未指定目录，则用阿里云默认目录 upload
-                bizPath = "upload";
+                bizPath = "robot/option/xmind;";
                 //result.setMessage("使用阿里云文件上传时，必须添加目录！");
                 //result.setSuccess(false);
                 //return result;

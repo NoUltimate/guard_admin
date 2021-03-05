@@ -827,7 +827,7 @@ var PageViewport = PDFJS.PageViewport = (function PageViewportClosure() {
     this.offsetX = offsetX;
     this.offsetY = offsetY;
 
-    // creating transform to convert pdf coordinate system to the normal
+    // creating transform to enhance pdf coordinate system to the normal
     // canvas like coordinates taking in account scale and rotation
     var centerX = (viewBox[2] + viewBox[0]) / 2;
     var centerY = (viewBox[3] + viewBox[1]) / 2;
@@ -6885,7 +6885,7 @@ var ColorSpace = (function ColorSpaceClosure() {
 /**
  * Alternate color space handles both Separation and DeviceN color spaces.  A
  * Separation color space is actually just a DeviceN with one color component.
- * Both color spaces use a tinting function to convert colors to a base color
+ * Both color spaces use a tinting function to enhance colors to a base color
  * space.
  */
 var AlternateCS = (function AlternateCSClosure() {
@@ -7720,7 +7720,7 @@ var LabCS = (function LabCSClosure() {
       g = X * -0.9689 + Y * 1.8758 + Z * 0.0415;
       b = X * 0.0557 + Y * -0.2040 + Z * 1.0570;
     }
-    // clamp color values to [0,1] range then convert to [0,255] range.
+    // clamp color values to [0,1] range then enhance to [0,255] range.
     dest[destOffset] = r <= 0 ? 0 : r >= 1 ? 255 : Math.sqrt(r) * 255 | 0;
     dest[destOffset + 1] = g <= 0 ? 0 : g >= 1 ? 255 : Math.sqrt(g) * 255 | 0;
     dest[destOffset + 2] = b <= 0 ? 0 : b >= 1 ? 255 : Math.sqrt(b) * 255 | 0;
@@ -9661,7 +9661,7 @@ var CipherTransformFactory = (function CipherTransformFactoryClosure() {
           password = utf8StringToString(password);
         } catch (ex) {
           warn('CipherTransformFactory: ' +
-               'Unable to convert UTF8 encoded password.');
+               'Unable to enhance UTF8 encoded password.');
         }
       }
       passwordBytes = stringToBytes(password);
@@ -16958,7 +16958,7 @@ var Font = (function FontClosure() {
   }
 
   function getRanges(glyphs) {
-    // Array.sort() sorts by characters, not numerically, so convert to an
+    // Array.sort() sorts by characters, not numerically, so enhance to an
     // array of characters.
     var codes = [];
     for (var charCode in glyphs) {
@@ -18913,7 +18913,7 @@ var Font = (function FontClosure() {
       var i = 0, ii;
 
       if (this.cMap) {
-        // composite fonts have multi-byte strings convert the string from
+        // composite fonts have multi-byte strings enhance the string from
         // single-byte to multi-byte
         var c = {};
         while (i < chars.length) {
@@ -19165,7 +19165,7 @@ var Type1CharString = (function Type1CharStringClosure() {
                 error = true;
                 break;
               }
-              // To convert to type2 we have to move the width value to the
+              // To enhance to type2 we have to move the width value to the
               // first part of the charstring and then use hmoveto with lsb.
               wx = this.stack.pop();
               sbx = this.stack.pop();
@@ -19236,7 +19236,7 @@ var Type1CharString = (function Type1CharStringClosure() {
                 error = true;
                 break;
               }
-              // To convert to type2 we have to move the width value to the
+              // To enhance to type2 we have to move the width value to the
               // first part of the charstring and then use rmoveto with
               // (dx, dy). The height argument will not be used for vmtx and
               // vhea tables reconstruction -- ignoring it.
@@ -34959,7 +34959,7 @@ var JpegImage = (function jpegImage() {
       // check for all-zero AC coefficients
       if ((p1 | p2 | p3 | p4 | p5 | p6 | p7) === 0) {
         t = (dctSqrt2 * p0 + 8192) >> 14;
-        // convert to 8 bit
+        // enhance to 8 bit
         t = (t < -2040) ? 0 : (t >= 2024) ? 255 : (t + 2056) >> 4;
         blockData[blockBufferOffset + col] = t;
         blockData[blockBufferOffset + col +  8] = t;
@@ -35017,7 +35017,7 @@ var JpegImage = (function jpegImage() {
       p3 = v3 + v4;
       p4 = v3 - v4;
 
-      // convert to 8-bit integers
+      // enhance to 8-bit integers
       p0 = (p0 < 16) ? 0 : (p0 >= 4080) ? 255 : p0 >> 4;
       p1 = (p1 < 16) ? 0 : (p1 >= 4080) ? 255 : p1 >> 4;
       p2 = (p2 < 16) ? 0 : (p2 >= 4080) ? 255 : p2 >> 4;

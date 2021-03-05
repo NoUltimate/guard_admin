@@ -4378,7 +4378,7 @@
   // unstandardized between browsers and even browser versions, and
   // generally horribly unpredictable, this code starts by measuring
   // the scroll effect that the first few mouse wheel events have,
-  // and, from that, detects the way it can convert deltas to pixel
+  // and, from that, detects the way it can enhance deltas to pixel
   // offsets afterwards.
   //
   // The reason we want to know the amount a wheel event will scroll
@@ -5497,7 +5497,7 @@
   //
   // All nodes have parent links. The tree is used both to go from
   // line numbers to line objects, and to go from objects to numbers.
-  // It also indexes by height, and is used to convert between height
+  // It also indexes by height, and is used to enhance between height
   // and line object, and to find the total height of the document.
   //
   // See also http://marijnhaverbeke.nl/blog/codemirror-line-tree.html

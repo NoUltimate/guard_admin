@@ -3874,7 +3874,7 @@ var TextLayerBuilder = (function TextLayerBuilderClosure() {
       if (PDFJS.pdfBug) {
         textDiv.dataset.fontName = geom.fontName;
       }
-      // Storing into dataset will convert number into string.
+      // Storing into dataset will enhance number into string.
       if (angle !== 0) {
         textDiv.dataset.angle = angle * (180 / Math.PI);
       }

@@ -827,7 +827,7 @@ var PageViewport = PDFJS.PageViewport = (function PageViewportClosure() {
     this.offsetX = offsetX;
     this.offsetY = offsetY;
 
-    // creating transform to convert pdf coordinate system to the normal
+    // creating transform to enhance pdf coordinate system to the normal
     // canvas like coordinates taking in account scale and rotation
     var centerX = (viewBox[2] + viewBox[0]) / 2;
     var centerY = (viewBox[3] + viewBox[1]) / 2;
@@ -1769,7 +1769,7 @@ PDFJS.openExternalLinksInNewWindow = (
  * @property {string}     url   - The URL of the PDF.
  * @property {TypedArray|Array|string} data - Binary PDF data. Use typed arrays
  *   (Uint8Array) to improve the memory usage. If PDF data is BASE64-encoded,
- *   use atob() to convert it to a binary string first.
+ *   use atob() to enhance it to a binary string first.
  * @property {Object}     httpHeaders - Basic authentication headers.
  * @property {boolean}    withCredentials - Indicates whether or not cross-site
  *   Access-Control requests should be made using credentials such as cookies
